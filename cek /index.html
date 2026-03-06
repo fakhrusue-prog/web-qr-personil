@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cek QR Personil</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f2f4f7;
+}
+
+.header{
+background:#0f3a5f;
+color:white;
+padding:15px;
+}
+
+.container{
+padding:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h3>Verifikasi QR Personil</h3>
+</div>
+
+<div class="container">
+
+<div class="card" id="data">
+
+Memuat data...
+
+</div>
+
+</div>
+
+<script>
+
+const database = {
+
+"0121281453": {
+nama:"Ahmad Fakhrudin",
+jabatan:"Teknisi",
+status:"VALID"
+},
+
+"99887766": {
+nama:"Budi Santoso",
+jabatan:"Supervisor",
+status:"VALID"
+}
+
+}
+
+const url = window.location.pathname
+const id = url.split("/").pop()
+
+if(database[id]){
+
+document.getElementById("data").innerHTML = `
+<h2>${database[id].nama}</h2>
+<p>Jabatan : ${database[id].jabatan}</p>
+<p>Status : ${database[id].status}</p>
+`
+
+}else{
+
+document.getElementById("data").innerHTML = `
+<h2>Data Tidak Ditemukan</h2>
+`
+
+}
+
+</script>
+
+</body>
+</html>
